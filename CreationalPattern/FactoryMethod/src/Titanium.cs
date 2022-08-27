@@ -8,8 +8,8 @@ namespace FactoryMethod
 {
     class Titanium : Card
     {
-        protected override int Limit { get => 40000; }
-        protected override string Name { get => nameof(Titanium); }
-        protected override CardType Type { get => CardType.CreditCard; }
+        internal override int Limit { get => 40000; }
+        internal override string Name { get => nameof(Titanium); }
+        internal override CardType Type { get => CardType.CreditCard; }
     }
 }
