@@ -10,4 +10,16 @@ var serviceProvider = new ServiceCollection()
     .BuildServiceProvider();
 
 var client = serviceProvider.GetService<Client>();
-client.Execute();
+
+Console.WriteLine("Please enter a number.");
+var amount = Console.ReadLine();
+var parsed = int.TryParse(amount, out var dollarAmount);
+
+if (!parsed) 
+{
+    Console.WriteLine("It's not a valid number.");
+    return;
+}
+    
+var exchangedAmount = client.Execute(dollarAmount);
+Console.WriteLine(exchangedAmount);

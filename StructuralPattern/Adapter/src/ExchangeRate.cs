@@ -13,9 +13,9 @@ namespace Adapter
         {
             this._exchange = exchange;
         }
-        public void INRToUSDExchange()
+        public int USDToINRExchange(int dollarAmount)
         {
-            this._exchange.CurrentINRToUSDExchange();
+            return this._exchange.CurrentUSDToINRExchange(dollarAmount);
         }
     }
 }

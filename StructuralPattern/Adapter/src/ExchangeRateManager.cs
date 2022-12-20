@@ -8,6 +8,9 @@ namespace Adapter
 {
     public class ExchangeRateManager
     {
-        public void CurrentINRToUSDExchange() { }
+        public int CurrentUSDToINRExchange(int dollarAmount) 
+        {
+            return dollarAmount * 80;
+        }
     }
 }

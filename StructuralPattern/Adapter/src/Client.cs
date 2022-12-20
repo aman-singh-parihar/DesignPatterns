@@ -9,13 +9,13 @@ namespace Adapter
     public class Client
     {
         private readonly IExchangeRate _exchange;
-        internal Client(IExchangeRate exchange)
+        public Client(IExchangeRate exchange)
         {
             this._exchange = exchange;
         }
-        public void Execute()
+        public int Execute(int dollarAmount)
         {
-            _exchange.INRToUSDExchange();
+            return _exchange.USDToINRExchange(dollarAmount);
         }
     }
 }

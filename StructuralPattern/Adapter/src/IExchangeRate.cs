@@ -8,6 +8,6 @@ namespace Adapter
 {
     public interface IExchangeRate
     {
-        public void INRToUSDExchange();
+        public int USDToINRExchange(int dollarAmount);
     }
 }
