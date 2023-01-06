@@ -8,5 +8,9 @@ namespace AbstractFactory
 {
     internal class ClassicChair : IChair
     {
+        internal ClassicChair()
+        {
+            Console.WriteLine("Classic chair created.");
+        }
     }
 }

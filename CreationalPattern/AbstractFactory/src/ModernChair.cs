@@ -8,5 +8,9 @@ namespace AbstractFactory
 {
     internal class ModernChair : IChair
     {
+        internal ModernChair()
+        {
+            Console.WriteLine("Modern chair created.");
+        }
     }
 }

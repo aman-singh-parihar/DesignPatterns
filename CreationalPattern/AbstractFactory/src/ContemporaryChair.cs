@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AbstractFactory
 {
-    internal class ClassicTable : ITable
+    internal class ContemporaryChair : IChair
     {
-        internal ClassicTable()
+        internal ContemporaryChair() 
         {
-            Console.WriteLine("Classic table created.");
+            Console.WriteLine("Contemporary chair created.");
         }
     }
 }

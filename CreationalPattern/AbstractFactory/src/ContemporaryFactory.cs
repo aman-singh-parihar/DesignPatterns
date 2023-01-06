@@ -10,12 +10,12 @@ namespace AbstractFactory
     {
         public IChair CreateChair()
         {
-            throw new NotImplementedException();
+            return new ContemporaryChair();
         }
 
         public ITable CreateTable()
         {
-            throw new NotImplementedException();
+            return new ContemporaryTable();
         }
     }
 }

@@ -8,5 +8,9 @@ namespace AbstractFactory
 {
     internal class ModernTable : ITable
     {
+        internal ModernTable()
+        {
+            Console.WriteLine("Modern table created.");
+        }
     }
 }
