@@ -25,6 +25,7 @@ jobs:
       - id: set-region          
         run: |
           echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor" >> $GITHUB_OUTPUT
+          echo "Repository Url=$REPOSITORY_URL"
     
   greeting_job:
     needs: [setting_variables]
