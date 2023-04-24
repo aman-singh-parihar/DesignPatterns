@@ -13,22 +13,18 @@ on:
         
 env:
   REGION: ${{ inputs.region }}
-  REPOSITORY_URL: ''
 
 jobs:
   setting_variables:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest 
+    
+    outputs:
+      repositoryUrl: ${{ steps.set-region.outputs.REPOSITORY_URL }}
+      
     steps:
-      - id: set-region
-        if: ${{ env.REGION == ''}}
+      - id: set-region          
         run: |
-          echo "REGION=us-east-1" ;
-          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor"
-          
-      - if: ${{ env.REGION != ''}}
-        run: |
-          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor";
-          echo "url: $REPOSITORY_URL"
+          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor" >> $GITHUB_OUTPUT
     
   greeting_job:
     needs: [setting_variables]
@@ -39,6 +35,4 @@ jobs:
       - name: "Say Hello Mona it's Monday"
         run: |
           echo "Region=$REGION"
-          echo "Repository Url=$REPOSITORY_URL"
-        env:
-          First_Name: ${{ inputs.region }}
+          echo "Repository Url=${{ needs.setting_variables.outputs.repositoryUrl }}"
