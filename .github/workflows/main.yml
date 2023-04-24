@@ -22,14 +22,16 @@ jobs:
       - id: set-region
         if: ${{ env.REGION == ''}}
         run: |
-          echo "REGION=us-east-1" >> $GITHUB_OUTPUT
-          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor"  >> $GITHUB_OUTPUT
+          echo "REGION=us-east-1" ;
+          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor"
           
       - if: ${{ env.REGION != ''}}
         run: |
-          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor"  >> $GITHUB_OUTPUT
+          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor";
+          echo "url: $REPOSITORY_URL"
     
   greeting_job:
+    needs: [setting_variables]
     runs-on: ubuntu-latest
     env:
       Greeting: Hello
