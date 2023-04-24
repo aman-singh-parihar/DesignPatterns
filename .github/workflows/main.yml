@@ -5,11 +5,8 @@ on:
     inputs:
       region:
         required: false
-        default: us-east-1
-        type: choice
-        options:
-          - us-east-1
-          - us-east-2
+        default: 'us-east-1'
+        type: string
         
 env:
   DAY_OF_WEEK: Monday
