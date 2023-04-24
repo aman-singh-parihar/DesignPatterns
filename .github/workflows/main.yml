@@ -5,11 +5,14 @@ on:
     inputs:
       region:
         required: false
-        default: 'us-east-1'
-        type: string
+        default: us-east-1
+        type: choice
+        options:
+          - us-east-1
+          - us-east-2
         
 env:
-  DAY_OF_WEEK: Monday
+  REGION: ${{ inputs.region }}
 
 jobs:
   greeting_job:
@@ -18,8 +21,9 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
+        if: ${{ env.REGION == 'us-east-1'}}
         run: |
           echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!."
-          echo "Hello Again ${{ inputs.region }}"
+          echo "region=env.REGION"
         env:
           First_Name: ${{ inputs.region }}
