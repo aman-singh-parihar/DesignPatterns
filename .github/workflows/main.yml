@@ -18,6 +18,6 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!. Deploying on $INPUTS_REGION"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!. Deploying on $INPUT_REGION"
         env:
           First_Name: Mona
