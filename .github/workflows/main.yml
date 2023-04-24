@@ -24,6 +24,6 @@ jobs:
         if: ${{ env.REGION == 'us-east-1'}}
         run: |
           echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!."
-          echo "region=env.REGION"
+          echo "region=$REGION"
         env:
           First_Name: ${{ inputs.region }}
