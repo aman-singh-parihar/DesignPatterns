@@ -13,17 +13,30 @@ on:
         
 env:
   REGION: ${{ inputs.region }}
+  REPOSITORY_URL: ''
 
 jobs:
+  setting_variables:
+    runs-on: ubuntu-latest    
+    steps:
+      - id: set-region
+        if: ${{ env.REGION == ''}}
+        run: |
+          echo "REGION=us-east-1" >> $GITHUB_OUTPUT
+          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor"  >> $GITHUB_OUTPUT
+          
+      - if: ${{ env.REGION != ''}}
+        run: |
+          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor"  >> $GITHUB_OUTPUT
+    
   greeting_job:
     runs-on: ubuntu-latest
     env:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        if: ${{ env.REGION == 'us-east-1'}}
         run: |
-          echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!."
-          echo "region=$REGION"
+          echo "Region=$REGION"
+          echo "Repository Url=$REPOSITORY_URL"
         env:
           First_Name: ${{ inputs.region }}
