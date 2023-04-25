@@ -16,7 +16,10 @@ env:
 
 jobs:
   setting_variables:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    
+    outputs:
+      RepositoryUrl: ${{steps.set-region.outputs.REPOSITORY_URL}}
       
     steps:
       - id: set-region
@@ -33,6 +36,6 @@ jobs:
       - name: "Say Hello Mona it's Monday"
         shell: bash
         run: |
-          RetrievedUrl="${{ needs.setting_variables.outputs.REPOSITORY_URL }}"
+          RetrievedUrl="${{ needs.setting_variables.outputs.RepositoryUrl }}"
           echo "Region=$REGION"
           echo "Repository Url=$RetrievedUrl"
