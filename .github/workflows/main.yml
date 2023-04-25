@@ -28,7 +28,7 @@ jobs:
           echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor" >> $GITHUB_OUTPUT
           
   just-hello:
-    needs: [setting_variables]
+    needs: setting_variables
     runs-on: ubuntu-latest
     
     steps:
@@ -38,7 +38,7 @@ jobs:
           echo ${{ needs.setting_variables.outputs.RepositoryUrl }}
     
   greeting_job:
-    needs: [setting_variables, just-hello]
+    needs: setting_variables
     runs-on: ubuntu-latest
     env:
       Greeting: Hello
