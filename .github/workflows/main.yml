@@ -15,37 +15,13 @@ env:
   REGION: ${{ inputs.region }}
 
 jobs:
-  setting_variables:
+  print_files:
     runs-on: ubuntu-latest
     
-    outputs:
-      RepositoryUrl: ${{steps.set-region.outputs.REPOSITORY_URL}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       
-    steps:
-      - id: set-region
+      - name: Listing files
         shell: bash
-        run: |
-          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor" >> $GITHUB_OUTPUT
-          
-  just-hello:
-    needs: setting_variables
-    runs-on: ubuntu-latest
-    
-    steps:
-      - shell: bash
-        run: |
-          echo "Hello_World"
-          echo ${{ needs.setting_variables.outputs.RepositoryUrl }}
-    
-  greeting_job:
-    needs: setting_variables
-    runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
-    steps:
-      - name: "Say Hello Mona it's Monday"
-        shell: bash
-        run: |
-          RetrievedUrl="${{ needs.setting_variables.outputs.RepositoryUrl }}"
-          echo "Region=$REGION"
-          echo "Repository Url=$RetrievedUrl"
+        run: ls
