@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest 
       
     steps:
-      - id: set-region          
+      - id: set-region
+        shell: bash
         run: |
           echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor" >> "$GITHUB_OUTPUT"
     
@@ -30,6 +31,8 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
+        shell: bash
         run: |
+          RetrievedUrl="${{ needs.setting_variables.outputs.REPOSITORY_URL }}"
           echo "Region=$REGION"
-          echo "Repository Url=${{ needs.setting_variables.outputs.REPOSITORY_URL }}"
+          echo "Repository Url=$RetrievedUrl"
