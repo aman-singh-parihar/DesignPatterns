@@ -25,7 +25,16 @@ jobs:
       - id: set-region
         shell: bash
         run: |
-          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor" >> "$GITHUB_OUTPUT"
+          echo "REPOSITORY_URL=dkr.ecr.$REGION.amazonaws.com/descriptionchangeprocessor" >> $GITHUB_OUTPUT
+          
+  just-hello:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - shell: bash
+        run: |
+          echo "Hello_World"
+          echo ${{ needs.setting_variables.outputs.RepositoryUrl }}
     
   greeting_job:
     needs: [setting_variables]
