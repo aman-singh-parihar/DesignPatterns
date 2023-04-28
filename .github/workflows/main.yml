@@ -3,6 +3,10 @@ name: Greeting on variable day
 on:
   workflow_dispatch:
     inputs:
+      branch:
+        required: true
+        description: branc to deploy
+        
       region:
         required: false
         default: us-east-1
@@ -13,6 +17,7 @@ on:
         
 env:
   REGION: ${{ inputs.region }}
+  BRANCH: ${{ inputs.branch }}
 
 jobs:
   print_files:
@@ -21,6 +26,9 @@ jobs:
     steps:
       - name: Region Selected
         run: echo $REGION
+        
+      - name: Branch Selected
+        run: echo $BRANCH
         
       - name: Checkout
         uses: actions/checkout@v3
