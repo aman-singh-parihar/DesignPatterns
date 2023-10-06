@@ -5,6 +5,7 @@ on:
     inputs:
       branch:
         required: true
+        default: 'master'
         description: branch to deploy
         
       region:
@@ -33,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: checking-checkout-feature-gha
+          ref: ${{env.BRANCH}}
       
       - name: Listing files
         shell: bash
