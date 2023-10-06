@@ -5,7 +5,7 @@ on:
     inputs:
       branch:
         required: true
-        description: branc to deploy
+        description: branch to deploy
         
       region:
         required: false
