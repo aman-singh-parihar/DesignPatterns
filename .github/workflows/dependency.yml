@@ -19,14 +19,18 @@ jobs:
     name: second_job
     runs-on: ubuntu-latest
     needs: [ first_job ]
-    if: ${{ needs.first_job.outputs.first_job_output == 'yes' && github.event_name == 'workflow_dispatch'}} 
+    if: ${{ success() }} 
+    # if: ${{ needs.first_job.outputs.first_job_output == 'yes' && github.event_name == 'workflow_dispatch'}} 
     steps:
-      - run: echo "second job completed"
+      - run: |
+          echo "second job completed"
+          echo needs.first_job.outputs.first_job_output
 
   third_job:
     name: third_job
     runs-on: ubuntu-latest
     needs: [ first_job, second_job ]
-    if: needs.second_job.result == 'success' || needs.second_job.result == 'skipped'
+    if: ${{ success() }}
+    # if: needs.second_job.result == 'success' || needs.second_job.result == 'skipped'
     steps: 
       - run: echo "third job completed"
