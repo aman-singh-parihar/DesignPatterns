@@ -11,7 +11,10 @@ jobs:
       - run: echo "first job completed."
       - id: set_outputs
         # run: echo "::set-output name=first_job_completed::yes"
-        run: echo "first_job_completed=yes" >> $GITHUB_OUTPUT
+        run: |
+          echo "first_job_completed=yes" >> $GITHUB_OUTPUT
+      - run: |
+          echo "${{ steps.set_outputs.first_job_completed }}"
     outputs:
       first_job_output: ${{ steps.set_outputs.first_job_completed }}
 
@@ -26,6 +29,7 @@ jobs:
           first_job_status : ${{ needs.first_job.outputs.first_job_output }}
         run: |
           echo "second job completed"
+      - run: |
           echo "$first_job_status"
 
   third_job:
