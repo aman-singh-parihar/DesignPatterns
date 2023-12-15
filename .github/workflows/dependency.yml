@@ -26,6 +26,6 @@ jobs:
     name: third_job
     runs-on: ubuntu-latest
     needs: [ first_job, second_job ]
-    if: needs.second_job.result == 'success' || needs.second_job.result = 'skipped'
+    if: needs.second_job.result == 'success' || needs.second_job.result == 'skipped'
     steps: 
       - run: echo "third job completed"
