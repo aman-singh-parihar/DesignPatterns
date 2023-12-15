@@ -28,9 +28,9 @@ jobs:
       - env:
           first_job_status : ${{ needs.first_job.outputs.outputs.first_job_output }}
         run: |
-          echo "second job completed"
-      - run: |
           echo "$first_job_status"
+      - run: |
+          echo "second job completed"
 
   third_job:
     name: third_job
