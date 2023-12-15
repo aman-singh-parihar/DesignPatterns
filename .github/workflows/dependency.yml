@@ -26,7 +26,7 @@ jobs:
     # if: ${{ needs.first_job.outputs.first_job_output == 'yes' && github.event_name == 'workflow_dispatch'}} 
     steps:
       - env:
-          first_job_status : ${{ needs.first_job.outputs.outputs.first_job_output }}
+          first_job_status : ${{ needs.first_job.outputs.first_job_output }}
         run: |
           echo "$first_job_status"
       - run: |
