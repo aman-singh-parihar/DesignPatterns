@@ -32,10 +32,11 @@ jobs:
         run: echo $BRANCH
 
       - name: workspace
-        run: echo ${{ github.workspace }} - {{ github.workflow}} - {{ github.head_ref}}
+        run: echo ${{ github.workspace }} - ${{ github.workflow}} - ${{ github.head_ref}}
 
       - name: custom workspace
         working-directory: DesignPatterns/CreationalPattern
+        run: echo Hello custom worksapce
         
       - name: Checkout
         uses: actions/checkout@v3
