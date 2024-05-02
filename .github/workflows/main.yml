@@ -3,12 +3,12 @@ name: Greeting on variable day
 on:
   push:
       branches:
-        - 'master'
+        - 'main'
   workflow_dispatch:
     inputs:
       branch:
         required: true
-        default: 'master'
+        default: 'main'
         description: branch to deploy
         
       region:
