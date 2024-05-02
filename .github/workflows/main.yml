@@ -22,6 +22,7 @@ on:
 env:
   REGION: ${{ inputs.region }}
   BRANCH: ${{ inputs.branch }}
+  IMAGE: DesignPatterns
 
 jobs:
   print_files:
@@ -33,6 +34,9 @@ jobs:
         
       - name: Branch Selected
         run: echo $BRANCH
+      
+      - name: Image Namge
+        run: echo RepoName $IMAGE
         
       - name: Checkout Branch - ${{ env.BRANCH }}
         uses: actions/checkout@v3
