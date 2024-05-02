@@ -35,8 +35,8 @@ jobs:
         run: echo ${{ github.workspace }} - ${{ github.workflow}} - ${{ github.head_ref}}
 
       - name: custom workspace
-        working-directory: DesignPatterns/CreationalPattern
-        run: echo Hello custom worksapce
+        working-directory: CreationalPattern
+        run: ls
         
       - name: Checkout
         uses: actions/checkout@v3
@@ -44,5 +44,4 @@ jobs:
           ref: ${{env.BRANCH}}
       
       - name: Listing files
-        shell: bash
         run: ls
