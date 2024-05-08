@@ -46,11 +46,11 @@ jobs:
       - name: workspace
         run: echo ${{ github.workspace }} - ${{ github.workflow}} - ${{ github.head_ref}}
         
-      - name: Listing files
-        run: ls
-        
       - name: custom workspace
         working-directory: CreationalPattern
+        run: ls
+
+      - name: Listing files
         run: ls
         
       - name: Checkout
