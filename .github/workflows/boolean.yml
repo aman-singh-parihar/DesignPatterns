@@ -21,11 +21,11 @@ jobs:
           echo "The value is: $FOO"
 
       - name: Run if foo
-        if: ${{ github.event.inputs.foo }}
+        if: ${{ fromJSON(github.event.inputs.foo) }}
         run: |
           echo "Foo!"
 
       - name: Don't run if foo  # Eh, I meant "Run if not foo"
-        if: ${{ ! github.event.inputs.foo }}
+        if: ${{ ! fromJSON(github.event.inputs.foo) }}
         run: |
           echo "Foo!"
