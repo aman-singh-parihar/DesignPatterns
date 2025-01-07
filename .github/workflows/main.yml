@@ -21,12 +21,11 @@ on:
 
       test:
         required: true
-        default: "No"
+        default: 'false'
         type: choice
         options:
-          - No
-          - Yes
-          - ok
+          - 'true'
+          - 'false'
         
 env:
   REGION: ${{ inputs.region }}
