@@ -26,6 +26,7 @@ on:
         options:
           - No
           - Yes
+          - ok
         
 env:
   REGION: ${{ inputs.region }}
