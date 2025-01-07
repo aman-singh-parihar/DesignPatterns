@@ -18,6 +18,14 @@ on:
         options:
           - us-east-1
           - us-east-2
+
+      test:
+        required: true
+        default: "No"
+        type: choice
+        options:
+          - No
+          - Yes
         
 env:
   REGION: ${{ inputs.region }}
