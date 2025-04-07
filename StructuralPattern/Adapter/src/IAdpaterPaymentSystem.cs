@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adapter
 {
-    public interface IExchangeRate
+    internal interface IAdpaterPaymentSystem
     {
-        public int USDToINRExchange(int dollarAmount);
     }
 }
