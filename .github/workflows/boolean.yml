@@ -28,4 +28,4 @@ jobs:
       - name: Don't run if foo  # Eh, I meant "Run if not foo"
         if: ${{ ! fromJSON(github.event.inputs.foo) }}
         run: |
-          echo "Foo!"
+          echo "Not Foo!"
