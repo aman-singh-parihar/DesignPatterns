@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Environment
         run: |
-          if [[ "${{env.ENVIRONMENT}}" == "production" ]]; then
+          if [[ "$${{env.ENVIRONMENT}}" == "production" ]]; then
             echo "Using Production"
           else
             echo "Using Non Production"
