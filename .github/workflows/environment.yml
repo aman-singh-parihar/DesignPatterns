@@ -1,0 +1,24 @@
+name: Environment Read
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        options:
+          - scratch-alpha
+          - production
+env:
+  ENVIRONMENT: ${{ github.event.inputs.environment }}
+jobs:
+  configuration:
+    name: Configure Environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Environment
+        run: |
+          if [[ "${{env.ENVIRONMENT}}" == "production" ]]: then
+            echo "Using Production"
+          else
+            echo "Using Non Production"
+          fi
