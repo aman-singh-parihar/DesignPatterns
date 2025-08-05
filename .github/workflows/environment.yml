@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Environment
         run: |
-          if [[ "$${{env.ENVIRONMENT}}" == "production" ]]; then
+          if [[ "${{env.ENVIRONMENT}}" == "production" ]]; then
             echo "ACCOUNT=production" >> GITHUB_ENV
             echo "Using Production"
           else
