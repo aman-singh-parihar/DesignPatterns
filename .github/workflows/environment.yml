@@ -31,3 +31,12 @@ jobs:
         run: |
           echo "The account type is $ACCOUNT from GHE"
           echo "The account type is ${{ env.ACCOUNT }} from local environment"
+  print-environment:
+    name: Print Environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print
+        run: |
+          echo "The account type is $ACCOUNT from GHE"
+          echo "The account type is ${{ env.ACCOUNT }} from local environment"
